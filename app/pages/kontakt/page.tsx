@@ -1,7 +1,288 @@
-import React from "react";
+import { Navigation } from "../components/navigation";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { motion } from "motion/react";
+import { useState } from "react";
 
-const Kontakt = () => {
-  return <div>Kontakt</div>;
-};
+export function KontaktPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-export default Kontakt;
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log("Form submitted:", formData);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0a1929]">
+      <Navigation />
+
+      {/* Hero */}
+      <section className="relative pt-32 pb-16 bg-gradient-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-[1320px] mx-auto px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-6xl mb-4 text-primary text-center"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Kontakt
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-center text-muted-foreground max-w-3xl mx-auto"
+          >
+            Skontaktuj się ze mną w sprawie licencji lub współpracy
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-20 bg-black">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+            >
+              <h2
+                className="text-3xl mb-8 text-primary"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Napisz do mnie
+              </h2>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Field */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
+                    Imię i nazwisko
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    onFocus={() => setFocusedField("name")}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
+                      focusedField === "name"
+                        ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
+                    }`}
+                    placeholder="Jan Kowalski"
+                    required
+                  />
+                </div>
+
+                {/* Email Field */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    onFocus={() => setFocusedField("email")}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
+                      focusedField === "email"
+                        ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
+                    }`}
+                    placeholder="jan@example.com"
+                    required
+                  />
+                </div>
+
+                {/* Subject Field */}
+                <div>
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
+                    Temat
+                  </label>
+                  <input
+                    id="subject"
+                    type="text"
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
+                    onFocus={() => setFocusedField("subject")}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
+                      focusedField === "subject"
+                        ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
+                    }`}
+                    placeholder="Zapytanie o licencję"
+                    required
+                  />
+                </div>
+
+                {/* Message Field */}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
+                    Wiadomość
+                  </label>
+                  <textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    onFocus={() => setFocusedField("message")}
+                    onBlur={() => setFocusedField(null)}
+                    rows={6}
+                    className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 resize-none ${
+                      focusedField === "message"
+                        ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
+                    }`}
+                    placeholder="Opisz swoją sprawę..."
+                    required
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-gradient-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  <Send className="w-5 h-5" />
+                  <span className="text-lg">Wyślij wiadomość</span>
+                </button>
+              </form>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <h2
+                className="text-3xl mb-8 text-primary"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Informacje kontaktowe
+              </h2>
+
+              <div className="space-y-6">
+                {/* Email */}
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3
+                      className="text-lg text-foreground mb-1"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      Email
+                    </h3>
+                    <a
+                      href="mailto:kontakt@komupiosenkekomu.pl"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      kontakt@komupiosenkekomu.pl
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Phone */}
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
+                    <Phone className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3
+                      className="text-lg text-foreground mb-1"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      Telefon
+                    </h3>
+                    <a
+                      href="tel:+48123456789"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      +48 123 456 789
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Location */}
+                <motion.div
+                  whileHover={{ x: 10 }}
+                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
+                    <MapPin className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3
+                      className="text-lg text-foreground mb-1"
+                      style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                      Lokalizacja
+                    </h3>
+                    <p className="text-muted-foreground">Warszawa, Polska</p>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Additional Info */}
+              <div className="mt-8 p-6 bg-card/30 rounded-lg border border-primary/10">
+                <h3
+                  className="text-xl text-primary mb-4"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Czas odpowiedzi
+                </h3>
+                <p className="text-foreground/80 leading-relaxed mb-3">
+                  Odpowiadam na wszystkie zapytania w ciągu 24-48 godzin.
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  W przypadku pilnych spraw proszę o kontakt telefoniczny.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

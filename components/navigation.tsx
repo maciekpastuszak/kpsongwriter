@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router';
+import Link from 'next/link';
 import { Logo } from './logo';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
@@ -16,15 +16,14 @@ const navItems = [
 ];
 
 export function Navigation() {
-  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1929]/80 backdrop-blur-md border-b border-primary/20">
-      <div className="max-w-[1320px] mx-auto px-6 py-4">
+      <div className="max-w-330 mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/home" className="transition-transform hover:scale-105">
+          <Link href="/home" className="transition-transform hover:scale-105">
             <Logo size="sm" />
           </Link>
 
@@ -33,7 +32,7 @@ export function Navigation() {
             {navItems.map((item) => (
               <Link
                 key={item.path}
-                to={item.path}
+                href={item.path}
                 className={`text-xs tracking-wider transition-all duration-300 relative group ${
                   location.pathname === item.path
                     ? 'text-primary'
@@ -42,7 +41,7 @@ export function Navigation() {
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[2px] bg-primary transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                     location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                   style={{
@@ -68,7 +67,7 @@ export function Navigation() {
             {navItems.map((item) => (
               <Link
                 key={item.path}
-                to={item.path}
+                href={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block text-sm tracking-wider transition-colors ${
                   location.pathname === item.path

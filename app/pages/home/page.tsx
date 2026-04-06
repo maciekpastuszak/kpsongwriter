@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
-import { Navigation } from '../components/navigation';
+import Link from 'next/link';
+import { Navigation } from '@/components/navigation';
 import { Music, FileText, Shield, Heart } from 'lucide-react';
 import { motion } from 'motion/react';
 

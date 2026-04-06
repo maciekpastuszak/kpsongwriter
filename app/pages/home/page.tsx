@@ -1,29 +1,31 @@
-import Link from 'next/link';
-import { Navigation } from '@/components/navigation';
-import { Music, FileText, Shield, Heart } from 'lucide-react';
-import { motion } from 'motion/react';
+"use client";
+
+import Link from "next/link";
+import { Navigation } from "@/components/navigation";
+import { Music, FileText, Shield, Heart } from "lucide-react";
+import { motion } from "motion/react";
 
 const offerings = [
   {
     icon: Music,
-    title: 'Oryginalne melodie',
-    description: 'demo AI z profesjonalnym brzmieniem'
+    title: "Oryginalne melodie",
+    description: "demo AI z profesjonalnym brzmieniem",
   },
   {
     icon: FileText,
-    title: 'Autorskie 100% teksty',
-    description: 'unikalne treści pełne emocji'
+    title: "Autorskie 100% teksty",
+    description: "unikalne treści pełne emocji",
   },
   {
     icon: Shield,
-    title: 'Licencje wyłączne',
-    description: 'pełne prawa do utworu'
+    title: "Licencje wyłączne",
+    description: "pełne prawa do utworu",
   },
   {
     icon: Heart,
-    title: 'Wsparcie artysty',
-    description: 'kontakt i pomoc na każdym etapie'
-  }
+    title: "Wsparcie artysty",
+    description: "kontakt i pomoc na każdym etapie",
+  },
 ];
 
 export function HomePage() {
@@ -36,20 +38,21 @@ export function HomePage() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1765224747170-be7b97010052?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY29uY2VydCUyMHN0YWdlJTIwc3BvdGxpZ2h0fGVufDF8fHx8MTc3MjM3NjYwN3ww&ixlib=rb-4.1.0&q=80&w=1080')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
         }}
       >
         {/* Spotlight overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50" />
-        
+        <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-black/50" />
+
         {/* Animated glow */}
         <motion.div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full pointer-events-none"
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-200 h-100 rounded-full pointer-events-none"
           style={{
-            background: 'radial-gradient(circle, rgba(255,140,66,0.15) 0%, transparent 70%)',
-            filter: 'blur(80px)',
+            background:
+              "radial-gradient(circle, rgba(255,140,66,0.15) 0%, transparent 70%)",
+            filter: "blur(80px)",
           }}
           animate={{
             scale: [1, 1.3, 1],
@@ -58,7 +61,7 @@ export function HomePage() {
           transition={{
             duration: 6,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
         />
 
@@ -74,8 +77,9 @@ export function HomePage() {
             <motion.div
               className="absolute inset-0 rounded-2xl"
               style={{
-                background: 'radial-gradient(circle, rgba(255,140,66,0.4) 0%, transparent 70%)',
-                filter: 'blur(40px)',
+                background:
+                  "radial-gradient(circle, rgba(255,140,66,0.4) 0%, transparent 70%)",
+                filter: "blur(40px)",
               }}
               animate={{
                 scale: [1, 1.15, 1],
@@ -84,31 +88,31 @@ export function HomePage() {
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                ease: 'easeInOut',
+                ease: "easeInOut",
               }}
             />
-            
+
             {/* Image container */}
             <div className="relative overflow-hidden rounded-2xl border-4 border-primary/40 group-hover:border-primary/60 transition-all duration-500 shadow-[0_0_60px_rgba(255,140,66,0.4)] group-hover:shadow-[0_0_80px_rgba(255,140,66,0.6)]">
               <img
                 src="https://images.unsplash.com/photo-1760830477848-8dcfeb038f8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwbWljcm9waG9uZSUyMGJva2VoJTIwc3RhZ2UlMjBsaWdodHN8ZW58MXx8fHwxNzcyNTI5ODgyfDA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Vintage microphone with stage lights"
-                className="w-[432px] h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-108 h-72 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              
+
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </motion.div>
 
-        <div className="relative z-10 max-w-[900px] mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-225 mx-auto px-6 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="text-5xl md:text-7xl mb-6 text-primary tracking-tight"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
             Komu piosenkę komu
           </motion.h1>
@@ -118,7 +122,7 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="text-xl md:text-2xl mb-4 text-foreground/90 leading-relaxed"
-            style={{ fontFamily: 'var(--font-body)' }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
             Autorskie piosenki Krzysztofa Macieja Pastuszaka.
             <br />
@@ -143,16 +147,16 @@ export function HomePage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
-              to="/katalog-piosenek"
+              href="/katalog-piosenek"
               className="px-8 py-4 bg-primary text-primary-foreground rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:scale-105"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Przeglądaj katalog
             </Link>
             <Link
-              to="/demo"
+              href="/demo"
               className="px-8 py-4 bg-transparent text-primary border-2 border-primary rounded-lg transition-all duration-300 hover:bg-primary/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-              style={{ fontFamily: 'var(--font-body)' }}
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Posłuchaj demo
             </Link>
@@ -161,11 +165,11 @@ export function HomePage() {
       </section>
 
       {/* Co Oferuję Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-[#0c1a2b]">
-        <div className="max-w-[1320px] mx-auto px-6">
+      <section className="py-20 bg-linear-to-b from-black to-[#0c1a2b]">
+        <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl md:text-5xl text-center mb-16 text-primary"
-            style={{ fontFamily: 'var(--font-heading)' }}
+            style={{ fontFamily: "var(--font-heading)" }}
           >
             Co oferuję
           </h2>
@@ -179,16 +183,16 @@ export function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="group relative p-8 bg-gradient-to-b from-card to-muted rounded-lg border border-primary/20 transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)]"
+                className="group relative p-8 bg-linear-to-b from-card to-muted rounded-lg border border-primary/20 transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)]"
               >
                 {/* Spotlight effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-accent/0 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-                
+                <div className="absolute inset-0 bg-linear-to-b from-accent/0 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+
                 <div className="relative z-10">
                   <offering.icon className="w-12 h-12 text-primary mb-4 group-hover:drop-shadow-[0_0_10px_rgba(255,140,66,0.6)] transition-all" />
                   <h3
                     className="text-xl mb-2 text-foreground"
-                    style={{ fontFamily: 'var(--font-heading)' }}
+                    style={{ fontFamily: "var(--font-heading)" }}
                   >
                     {offering.title}
                   </h3>

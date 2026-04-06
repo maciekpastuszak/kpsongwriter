@@ -1,22 +1,26 @@
-import Link from 'next/link';
-import { Logo } from './logo';
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Logo } from "./logo";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const navItems = [
-  { label: 'STRONA GŁÓWNA', path: '/home' },
-  { label: 'PORTFOLIO', path: '/portfolio' },
-  { label: 'KATALOG PIOSENEK', path: '/katalog-piosenek' },
-  { label: 'KATALOG TEKSTÓW', path: '/katalog-tekstow' },
-  { label: 'LISTA UTWORÓW', path: '/lista-utworow' },
-  { label: 'LICENCJE', path: '/licencje' },
-  { label: 'DEMO', path: '/demo' },
-  { label: 'KONTAKT', path: '/kontakt' },
-  { label: 'LOGOWANIE', path: '/logowanie' }
+  { label: "STRONA GŁÓWNA", path: "/home" },
+  { label: "PORTFOLIO", path: "/portfolio" },
+  { label: "KATALOG PIOSENEK", path: "/katalog-piosenek" },
+  { label: "KATALOG TEKSTÓW", path: "/katalog-tekstow" },
+  { label: "LISTA UTWORÓW", path: "/lista-utworow" },
+  { label: "LICENCJE", path: "/licencje" },
+  { label: "DEMO", path: "/demo" },
+  { label: "KONTAKT", path: "/kontakt" },
+  { label: "LOGOWANIE", path: "/logowanie" },
 ];
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1929]/80 backdrop-blur-md border-b border-primary/20">
@@ -35,17 +39,22 @@ export function Navigation() {
                 href={item.path}
                 className={`text-xs tracking-wider transition-all duration-300 relative group ${
                   location.pathname === item.path
-                    ? 'text-primary'
-                    : 'text-foreground/70 hover:text-primary'
+                    ? "text-primary"
+                    : "text-foreground/70 hover:text-primary"
                 }`}
               >
                 {item.label}
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    location.pathname === item.path ? 'w-full' : 'w-0 group-hover:w-full'
+                    location.pathname === item.path
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                   }`}
                   style={{
-                    boxShadow: location.pathname === item.path ? '0 0 8px rgba(212,175,55,0.6)' : 'none'
+                    boxShadow:
+                      location.pathname === item.path
+                        ? "0 0 8px rgba(212,175,55,0.6)"
+                        : "none",
                   }}
                 />
               </Link>
@@ -71,8 +80,8 @@ export function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block text-sm tracking-wider transition-colors ${
                   location.pathname === item.path
-                    ? 'text-primary'
-                    : 'text-foreground/70 hover:text-primary'
+                    ? "text-primary"
+                    : "text-foreground/70 hover:text-primary"
                 }`}
               >
                 {item.label}

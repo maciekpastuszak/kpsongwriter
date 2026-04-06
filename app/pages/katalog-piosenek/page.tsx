@@ -1,4 +1,4 @@
-import { Navigation } from "../components/navigation";
+import Navigation from "@/components/Navigation";
 import { Play, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 

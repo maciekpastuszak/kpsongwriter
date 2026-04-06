@@ -18,7 +18,7 @@ const navItems = [
   { label: "LOGOWANIE", path: "/logowanie" },
 ];
 
-export function Navigation() {
+export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -46,13 +46,11 @@ export function Navigation() {
                 {item.label}
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    location.pathname === item.path
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
+                    pathname === item.path ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                   style={{
                     boxShadow:
-                      location.pathname === item.path
+                      pathname === item.path
                         ? "0 0 8px rgba(212,175,55,0.6)"
                         : "none",
                   }}

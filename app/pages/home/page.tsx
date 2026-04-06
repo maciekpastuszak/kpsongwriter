@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Navigation } from "@/components/navigation";
+import Navigation from "@/components/Navigation";
 import { Music, FileText, Shield, Heart } from "lucide-react";
 import { motion } from "motion/react";
 

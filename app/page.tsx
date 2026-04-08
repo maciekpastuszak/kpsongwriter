@@ -1,6 +1,4 @@
-import Image from "next/image";
-import HomePage from "./home/page";
-
-export default function Home() {
-  return <HomePage />;
+import { SplashPage } from "@/components/splash/SplashPage";
+export default function Page() {
+  return <SplashPage />;
 }

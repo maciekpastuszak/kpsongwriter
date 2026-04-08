@@ -1,4 +1,4 @@
-import { Navigation } from "../components/navigation";
+import Navigation from "@/components/Navigation";
 import { Shield, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -81,8 +81,8 @@ export function ListaUtoworowPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-b from-[#0c1a2b] to-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ export function ListaUtoworowPage() {
 
       {/* Works Table */}
       <section className="py-20 bg-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           {/* Desktop Table */}
           <div className="hidden lg:block overflow-x-auto">
             <motion.table
@@ -202,7 +202,7 @@ export function ListaUtoworowPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="p-6 bg-gradient-to-br from-card to-muted rounded-lg border border-primary/20"
+                className="p-6 bg-linear-to-br from-card to-muted rounded-lg border border-primary/20"
               >
                 <h3
                   className="text-xl text-foreground mb-3"
@@ -257,8 +257,8 @@ export function ListaUtoworowPage() {
       </section>
 
       {/* Footer Note */}
-      <section className="py-16 bg-gradient-to-t from-[#0c1a2b] to-black">
-        <div className="max-w-[900px] mx-auto px-6">
+      <section className="py-16 bg-linear-to-t from-[#0c1a2b] to-black">
+        <div className="max-w-225 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

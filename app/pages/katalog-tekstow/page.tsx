@@ -1,6 +1,6 @@
-import { Navigation } from "../components/navigation";
+import Navigation from "@/components/Navigation";
 import { Lock } from "lucide-react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 const lyrics = [
@@ -54,8 +54,8 @@ export function KatalogTekstowPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-b from-[#0c1a2b] to-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export function KatalogTekstowPage() {
 
       {/* Lyrics Grid */}
       <section className="py-20 bg-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {lyrics.map((lyric, index) => (
               <motion.div
@@ -87,7 +87,7 @@ export function KatalogTekstowPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative overflow-hidden rounded-lg bg-gradient-to-br from-card to-muted border border-primary/20 hover:border-primary/40 transition-all duration-300"
+                className="group relative overflow-hidden rounded-lg bg-linear-to-br from-card to-muted border border-primary/20 hover:border-primary/40 transition-all duration-300"
               >
                 <div className="p-8">
                   {/* Title */}
@@ -110,7 +110,7 @@ export function KatalogTekstowPage() {
 
                       {/* Locked overlay */}
                       {lyric.locked && (
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/80 to-card flex items-end justify-center pb-8">
+                        <div className="absolute inset-0 bg-linear-to-b from-transparent via-card/80 to-card flex items-end justify-center pb-8">
                           <div className="text-center">
                             <Lock className="w-12 h-12 text-primary mx-auto mb-3 drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
                             <p className="text-sm text-muted-foreground">
@@ -137,8 +137,8 @@ export function KatalogTekstowPage() {
 
                   {/* CTA */}
                   <Link
-                    to="/logowanie"
-                    className="w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
+                    href="/logowanie"
+                    className="w-full px-6 py-3 bg-linear-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Lock className="w-4 h-4" />
                     Zaloguj się, aby zobaczyć pełny tekst
@@ -151,8 +151,8 @@ export function KatalogTekstowPage() {
       </section>
 
       {/* Info Banner */}
-      <section className="py-16 bg-gradient-to-t from-[#0c1a2b] to-black">
-        <div className="max-w-[900px] mx-auto px-6 text-center">
+      <section className="py-16 bg-linear-to-t from-[#0c1a2b] to-black">
+        <div className="max-w-225 mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ export function KatalogTekstowPage() {
               zaloguj, aby uzyskać pełny dostęp do całej bazy utworów.
             </p>
             <Link
-              to="/logowanie"
+              href="/logowanie"
               className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all duration-300"
             >
               Przejdź do logowania

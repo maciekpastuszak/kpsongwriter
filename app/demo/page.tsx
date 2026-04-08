@@ -13,7 +13,7 @@ const demoTracks = [
   { title: "Pod Gwiazdami", duration: "4:02", genre: "Ballada" },
 ];
 
-export default function SongDemo() {
+export default function Demo() {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(35);

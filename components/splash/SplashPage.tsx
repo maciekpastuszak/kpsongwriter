@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 export function SplashPage() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export function SplashPage() {
   }, []);
 
   const handleClick = () => {
-    router.push("/");
+    router.push("/home");
   };
 
   return (

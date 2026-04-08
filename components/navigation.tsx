@@ -13,7 +13,7 @@ const navItems = [
   { label: "KATALOG TEKSTÓW", path: "/katalog-tekstow" },
   { label: "LISTA UTWORÓW", path: "/lista-utworow" },
   { label: "LICENCJE", path: "/licencje" },
-  { label: "DEMO", path: "/songdemo" },
+  { label: "DEMO", path: "/demo" },
   { label: "KONTAKT", path: "/kontakt" },
   { label: "LOGOWANIE", path: "/logowanie" },
 ];

@@ -38,7 +38,7 @@ export default function Navigation() {
                 key={item.path}
                 href={item.path}
                 className={`text-xs tracking-wider transition-all duration-300 relative group ${
-                  location.pathname === item.path
+                  pathname === item.path
                     ? "text-primary"
                     : "text-foreground/70 hover:text-primary"
                 }`}
@@ -77,7 +77,7 @@ export default function Navigation() {
                 href={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block text-sm tracking-wider transition-colors ${
-                  location.pathname === item.path
+                  pathname === item.path
                     ? "text-primary"
                     : "text-foreground/70 hover:text-primary"
                 }`}

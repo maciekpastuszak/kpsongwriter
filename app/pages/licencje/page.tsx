@@ -1,4 +1,4 @@
-import { Navigation } from "../components/navigation";
+import Navigation from "@/components/Navigation";
 import {
   Shield,
   FileText,
@@ -88,9 +88,9 @@ export function LicencjePage() {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black" />
 
-        <div className="relative max-w-[1320px] mx-auto px-6">
+        <div className="relative max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -112,8 +112,8 @@ export function LicencjePage() {
       </section>
 
       {/* Model Licencjonowania */}
-      <section className="py-20 bg-gradient-to-b from-black to-[#0c1a2b]">
-        <div className="max-w-[900px] mx-auto px-6">
+      <section className="py-20 bg-linear-to-b from-black to-[#0c1a2b]">
+        <div className="max-w-225 mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ export function LicencjePage() {
 
       {/* Co Otrzymujesz */}
       <section className="py-20 bg-[#0c1a2b]">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl mb-12 text-primary text-center"
             style={{ fontFamily: "var(--font-heading)" }}
@@ -194,7 +194,7 @@ export function LicencjePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="p-6 bg-gradient-to-br from-card to-muted rounded-lg border border-primary/20 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)] transition-all duration-300"
+                className="p-6 bg-linear-to-br from-card to-muted rounded-lg border border-primary/20 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)] transition-all duration-300"
               >
                 <item.icon className="w-10 h-10 text-primary mb-4 drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
                 <h3
@@ -213,8 +213,8 @@ export function LicencjePage() {
       </section>
 
       {/* Czym jest Licencja Wyłączna */}
-      <section className="py-20 bg-gradient-to-b from-[#0c1a2b] to-black">
-        <div className="max-w-[900px] mx-auto px-6">
+      <section className="py-20 bg-linear-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-225 mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -233,7 +233,7 @@ export function LicencjePage() {
           >
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
                 <p className="text-foreground/80 leading-relaxed">
                   Tekst jest{" "}
                   <span className="text-primary">
@@ -243,7 +243,7 @@ export function LicencjePage() {
                 </p>
               </div>
               <div className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
                 <p className="text-foreground/80 leading-relaxed">
                   Utwór zostaje{" "}
                   <span className="text-accent">
@@ -253,7 +253,7 @@ export function LicencjePage() {
                 </p>
               </div>
               <div className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
                 <p className="text-foreground/80 leading-relaxed">
                   <span className="text-primary">
                     Żadne dalsze licencjonowanie
@@ -268,7 +268,7 @@ export function LicencjePage() {
 
       {/* Jak to działa */}
       <section className="py-20 bg-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl mb-16 text-primary text-center"
             style={{ fontFamily: "var(--font-heading)" }}
@@ -287,7 +287,7 @@ export function LicencjePage() {
                 className="relative text-center"
               >
                 <div
-                  className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl text-black shadow-[0_0_30px_rgba(212,175,55,0.4)]"
+                  className="w-16 h-16 mx-auto mb-4 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center text-2xl text-black shadow-[0_0_30px_rgba(212,175,55,0.4)]"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {step.number}
@@ -304,7 +304,7 @@ export function LicencjePage() {
 
                 {/* Connector line */}
                 {index < howItWorks.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-gradient-to-r from-primary/50 to-accent/50" />
+                  <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-linear-to-r from-primary/50 to-accent/50" />
                 )}
               </motion.div>
             ))}
@@ -313,8 +313,8 @@ export function LicencjePage() {
       </section>
 
       {/* Dokumenty do Pobrania */}
-      <section className="py-20 bg-gradient-to-b from-black to-[#0c1a2b]">
-        <div className="max-w-[1000px] mx-auto px-6">
+      <section className="py-20 bg-linear-to-b from-black to-[#0c1a2b]">
+        <div className="max-w-250 mx-auto px-6">
           <h2
             className="text-4xl mb-4 text-primary text-center"
             style={{ fontFamily: "var(--font-heading)" }}
@@ -322,7 +322,7 @@ export function LicencjePage() {
             Dokumenty do pobrania
           </h2>
 
-          <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-12" />
+          <div className="w-32 h-px bg-linear-to-r from-transparent via-primary to-transparent mx-auto mb-12" />
 
           <div className="space-y-4">
             {documents.map((doc, index) => (
@@ -332,7 +332,7 @@ export function LicencjePage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group flex items-center gap-6 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                className="group flex items-center gap-6 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
               >
                 <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all">
                   <FileText className="w-6 h-6 text-primary" />
@@ -365,12 +365,12 @@ export function LicencjePage() {
 
       {/* Akceptacja i CTA */}
       <section className="py-20 bg-[#0c1a2b]">
-        <div className="max-w-[800px] mx-auto px-6">
+        <div className="max-w-200 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 bg-gradient-to-br from-card to-muted rounded-lg border border-primary/20"
+            className="p-8 bg-linear-to-br from-card to-muted rounded-lg border border-primary/20"
           >
             <div className="flex items-start gap-4 mb-8">
               <input
@@ -394,7 +394,7 @@ export function LicencjePage() {
               disabled={!acceptedTerms}
               className={`w-full py-4 rounded-lg transition-all duration-300 ${
                 acceptedTerms
-                  ? "bg-gradient-to-r from-primary to-accent text-black shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] hover:scale-[1.02]"
+                  ? "bg-linear-to-r from-primary to-accent text-black shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:shadow-[0_0_60px_rgba(212,175,55,0.7)] hover:scale-[1.02]"
                   : "bg-muted text-muted-foreground cursor-not-allowed"
               }`}
               style={{ fontFamily: "var(--font-heading)" }}

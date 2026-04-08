@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { Lock } from "lucide-react";
 import Link from "next/link";
@@ -48,7 +50,7 @@ const lyrics = [
   },
 ];
 
-export function KatalogTekstowPage() {
+export default function KatalogTekstowPage() {
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />

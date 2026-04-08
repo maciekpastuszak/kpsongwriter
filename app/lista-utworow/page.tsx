@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { Shield, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
@@ -75,7 +77,7 @@ const works = [
   },
 ];
 
-export function ListaUtoworowPage() {
+export default function ListaUtoworowPage() {
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />

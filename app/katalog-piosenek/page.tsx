@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { Play, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
@@ -61,7 +63,7 @@ const songs = [
   },
 ];
 
-export function KatalogPiosenekPage() {
+export default function KatalogPiosenekPage() {
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />

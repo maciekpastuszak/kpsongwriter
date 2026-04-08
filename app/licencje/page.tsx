@@ -1,3 +1,5 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import {
   Shield,
@@ -71,7 +73,7 @@ const howItWorks = [
   },
 ];
 
-export function LicencjePage() {
+export default function LicencjePage() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   return (

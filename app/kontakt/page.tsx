@@ -1,9 +1,11 @@
+"use client";
+
 import Navigation from "@/components/Navigation";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 
-export function KontaktPage() {
+export default function KontaktPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

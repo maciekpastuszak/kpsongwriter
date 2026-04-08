@@ -1,4 +1,6 @@
-import { Navigation } from "../components/navigation";
+"use client";
+
+import Navigation from "@/components/Navigation";
 import { Play, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import studioImage from "figma:asset/989346e6c74e009d58cf75b7e41f5098314e259c.png";
@@ -17,7 +19,7 @@ const pdfExcerpts = [
   { title: "Utwory Specjalne", pages: "10 stron", type: "PDF" },
 ];
 
-export function PortfolioPage() {
+export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />
@@ -64,16 +66,16 @@ export function PortfolioPage() {
               <img
                 src="https://images.unsplash.com/photo-1768885511419-db1b61b02d0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWNvcmRpbmclMjBzdHVkaW8lMjBuaWdodGNsdWIlMjBhdG1vc3BoZXJlJTIwbmVvbiUyMGxpZ2h0c3xlbnwxfHx8fDE3NzI1MzA0Nzl8MA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Recording studio with club atmosphere"
-                className="w-[432px] h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-108 h-72 object-cover group-hover:scale-105 transition-transform duration-500"
               />
 
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
             </div>
           </div>
         </motion.div>
 
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,11 +101,11 @@ export function PortfolioPage() {
         />
 
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1929]/92 via-[#0a1929]/95 to-[#0a1929]/92" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0a1929]/92 via-[#0a1929]/95 to-[#0a1929]/92" />
 
         {/* Animated spotlight glow overlay */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full pointer-events-none"
           style={{
             background:
               "radial-gradient(circle, rgba(255,140,66,0.15) 0%, transparent 70%)",
@@ -120,7 +122,7 @@ export function PortfolioPage() {
           }}
         />
 
-        <div className="relative z-10 max-w-[900px] mx-auto px-6">
+        <div className="relative z-10 max-w-225 mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +169,7 @@ export function PortfolioPage() {
 
       {/* Audio Samples Section */}
       <section className="py-20 bg-[#0c1a2b]">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl mb-12 text-primary"
             style={{ fontFamily: "var(--font-heading)" }}
@@ -183,7 +185,7 @@ export function PortfolioPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)]"
+                className="group relative p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)]"
               >
                 <div className="flex items-center gap-4">
                   <button className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/20 group-hover:bg-accent/30 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,140,66,0.4)]">
@@ -211,8 +213,8 @@ export function PortfolioPage() {
       </section>
 
       {/* PDF Excerpts Section */}
-      <section className="py-20 bg-gradient-to-b from-[#0c1a2b] to-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+      <section className="py-20 bg-linear-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl mb-12 text-primary"
             style={{ fontFamily: "var(--font-heading)" }}
@@ -228,7 +230,7 @@ export function PortfolioPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative p-6 bg-gradient-to-r from-muted to-card rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
+                className="group relative p-6 bg-linear-to-r from-muted to-card rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all">

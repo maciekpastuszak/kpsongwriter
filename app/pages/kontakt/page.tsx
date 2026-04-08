@@ -1,4 +1,4 @@
-import { Navigation } from "../components/navigation";
+import Navigation from "@/components/Navigation";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -24,8 +24,8 @@ export function KontaktPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-gradient-to-b from-[#0c1a2b] to-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+        <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function KontaktPage() {
 
       {/* Main Content */}
       <section className="py-20 bg-black">
-        <div className="max-w-[1200px] mx-auto px-6">
+        <div className="max-w-300 mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div
@@ -173,7 +173,7 @@ export function KontaktPage() {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
+                  className="w-full py-4 bg-linear-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   <Send className="w-5 h-5" />
@@ -199,7 +199,7 @@ export function KontaktPage() {
                 {/* Email */}
                 <motion.div
                   whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
                 >
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
                     <Mail className="w-6 h-6 text-primary" />
@@ -223,7 +223,7 @@ export function KontaktPage() {
                 {/* Phone */}
                 <motion.div
                   whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
                 >
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
                     <Phone className="w-6 h-6 text-primary" />
@@ -247,7 +247,7 @@ export function KontaktPage() {
                 {/* Location */}
                 <motion.div
                   whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-gradient-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
+                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
                 >
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
                     <MapPin className="w-6 h-6 text-primary" />

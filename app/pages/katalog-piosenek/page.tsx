@@ -78,7 +78,7 @@ export function KatalogPiosenekPage() {
       >
         {/* Animated spotlight glow overlay */}
         <motion.div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 w-125 h-125 rounded-full pointer-events-none"
           style={{
             background:
               "radial-gradient(circle, rgba(255,140,66,0.12) 0%, transparent 70%)",
@@ -95,7 +95,7 @@ export function KatalogPiosenekPage() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1320px] mx-auto px-6">
+        <div className="relative z-10 max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export function KatalogPiosenekPage() {
 
       {/* Songs Grid */}
       <section className="py-20 bg-black">
-        <div className="max-w-[1320px] mx-auto px-6">
+        <div className="max-w-330 mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {songs.map((song, index) => (
               <motion.div
@@ -127,10 +127,10 @@ export function KatalogPiosenekPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative overflow-hidden rounded-lg bg-gradient-to-br from-card to-muted border border-primary/20 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,140,66,0.2)]"
+                className="group relative overflow-hidden rounded-lg bg-linear-to-br from-card to-muted border border-primary/20 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,140,66,0.2)]"
               >
                 {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/5 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-br from-accent/0 via-accent/5 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative p-6">
                   {/* Header */}
@@ -176,7 +176,7 @@ export function KatalogPiosenekPage() {
 
                   {/* CTA Button */}
                   <button
-                    className="w-full px-6 py-3 bg-gradient-to-r from-primary/10 to-accent/10 text-primary border border-primary/30 rounded-lg hover:border-accent hover:shadow-[0_0_20px_rgba(255,140,66,0.3)] transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-accent/10 text-primary border border-primary/30 rounded-lg hover:border-accent hover:shadow-[0_0_20px_rgba(255,140,66,0.3)] transition-all duration-300 flex items-center justify-center gap-2"
                     disabled={song.status === "Sprzedany"}
                   >
                     <MessageCircle className="w-4 h-4" />

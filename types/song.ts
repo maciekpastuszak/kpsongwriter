@@ -2,9 +2,8 @@ export type Song = {
   _id: string;
   title: string;
   description?: string;
-  duration?: number;
+  duration?: string;
   audioUrl: string;
   genre?: string;
-  status?: "Dostępny" | "W trakcie" | "Sprzedany";
-  statusColor?: string;
+  status: "Dostępny" | "W trakcie" | "Sprzedany";
 };

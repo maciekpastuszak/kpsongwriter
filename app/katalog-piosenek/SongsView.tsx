@@ -10,84 +10,37 @@ type Props = {
   songs: Song[];
 };
 
-// const songs = [
-//   {
-//     title: "Wiatr w Włosach",
-//     description: "Nostalgiczna ballada o wspomnieniach letnich dni",
-//     genre: "Ballada",
-//     status: "Dostępny",
-//     statusColor: "text-green-400",
-//   },
-//   {
-//     title: "Miasto Snów",
-//     description: "Energetyczna opowieść o nocnym życiu metropolii",
-//     genre: "Pop Rock",
-//     status: "Dostępny",
-//     statusColor: "text-green-400",
-//   },
-//   {
-//     title: "Krok po Kroku",
-//     description: "Motywująca pieśń o determinacji i wytrwałości",
-//     genre: "Pop",
-//     status: "W trakcie",
-//     statusColor: "text-accent",
-//   },
-//   {
-//     title: "Cienie Nocy",
-//     description: "Mroczna kompozycja o ukrytych emocjach",
-//     genre: "Alternative",
-//     status: "Dostępny",
-//     statusColor: "text-green-400",
-//   },
-//   {
-//     title: "Słońce Wschodzi",
-//     description: "Optymistyczna piosenka o nowym początku",
-//     genre: "Pop",
-//     status: "Sprzedany",
-//     statusColor: "text-red-400",
-//   },
-//   {
-//     title: "Pod Gwiazdami",
-//     description: "Romantyczna ballada o miłości i tęsknocie",
-//     genre: "Ballada",
-//     status: "Dostępny",
-//     statusColor: "text-green-400",
-//   },
-//   {
-//     title: "Droga Powrotna",
-//     description: "Refleksyjna opowieść o powrocie do korzeni",
-//     genre: "Folk Rock",
-//     status: "Dostępny",
-//     statusColor: "text-green-400",
-//   },
-//   {
-//     title: "Ostatni Taniec",
-//     description: "Sentymentalna pieśń o pożegnaniu i nadziei",
-//     genre: "Ballada",
-//     status: "W trakcie",
-//     statusColor: "text-accent",
-//   },
-// ];
+const statusStyles = {
+  "Dostępny": "bg-green-500/10 text-green-500 border-green-500/20",
+  "W trakcie": "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
+  "Sprzedany": "bg-red-500/10 text-red-500 border-red-500/20",
+};
 
 export default function SongsView({ songs }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playingId, setPlayingId] = useState<string | null>(null);
 
   const togglePlay = (song: Song) => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
     if (playingId === song._id) {
-      audioRef.current.pause();
+      audio.pause();
       setPlayingId(null);
     } else {
-      audioRef.current.src = song.audioUrl;
-      audioRef.current.play();
+      // If a different song was playing, change the source
+      audio.src = song.audioUrl;
+      audio.load(); // Force the browser to load the new source
+      audio.play().catch((error) => {
+        console.error("Playback failed:", error);
+      });
       setPlayingId(song._id);
     }
   };
 
   return (
     <div className="min-h-screen bg-[#0a1929]">
+      <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
       <Navigation />
 
       {/* Hero */}
@@ -171,11 +124,9 @@ export default function SongsView({ songs }: Props) {
                       </span>
                     </div>
 
-                    <span
-                      className={`text-sm ${song.statusColor} border px-3 py-1 rounded-full text-xs`}
-                    >
-                      {song.status}
-                    </span>
+                  <span className={`px-3 py-1 rounded-full text-xs border ${statusStyles[song.status] || "bg-gray-500/10 text-gray-500"}`}>
+                    {song.status}
+                  </span>
                   </div>
 
                   {/* Description */}

@@ -1,69 +1,91 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
-import { Play, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
+import { useRef, useState } from "react";
+import Navigation from "@/components/Navigation";
+import { Play, Pause, MessageCircle } from "lucide-react";
+import { Song } from "@/types/song";
 
-const songs = [
-  {
-    title: "Wiatr w Włosach",
-    description: "Nostalgiczna ballada o wspomnieniach letnich dni",
-    genre: "Ballada",
-    status: "Dostępny",
-    statusColor: "text-green-400",
-  },
-  {
-    title: "Miasto Snów",
-    description: "Energetyczna opowieść o nocnym życiu metropolii",
-    genre: "Pop Rock",
-    status: "Dostępny",
-    statusColor: "text-green-400",
-  },
-  {
-    title: "Krok po Kroku",
-    description: "Motywująca pieśń o determinacji i wytrwałości",
-    genre: "Pop",
-    status: "W trakcie",
-    statusColor: "text-accent",
-  },
-  {
-    title: "Cienie Nocy",
-    description: "Mroczna kompozycja o ukrytych emocjach",
-    genre: "Alternative",
-    status: "Dostępny",
-    statusColor: "text-green-400",
-  },
-  {
-    title: "Słońce Wschodzi",
-    description: "Optymistyczna piosenka o nowym początku",
-    genre: "Pop",
-    status: "Sprzedany",
-    statusColor: "text-red-400",
-  },
-  {
-    title: "Pod Gwiazdami",
-    description: "Romantyczna ballada o miłości i tęsknocie",
-    genre: "Ballada",
-    status: "Dostępny",
-    statusColor: "text-green-400",
-  },
-  {
-    title: "Droga Powrotna",
-    description: "Refleksyjna opowieść o powrocie do korzeni",
-    genre: "Folk Rock",
-    status: "Dostępny",
-    statusColor: "text-green-400",
-  },
-  {
-    title: "Ostatni Taniec",
-    description: "Sentymentalna pieśń o pożegnaniu i nadziei",
-    genre: "Ballada",
-    status: "W trakcie",
-    statusColor: "text-accent",
-  },
-];
+type Props = {
+  songs: Song[];
+};
 
-export default function KatalogPiosenekPage() {
+// const songs = [
+//   {
+//     title: "Wiatr w Włosach",
+//     description: "Nostalgiczna ballada o wspomnieniach letnich dni",
+//     genre: "Ballada",
+//     status: "Dostępny",
+//     statusColor: "text-green-400",
+//   },
+//   {
+//     title: "Miasto Snów",
+//     description: "Energetyczna opowieść o nocnym życiu metropolii",
+//     genre: "Pop Rock",
+//     status: "Dostępny",
+//     statusColor: "text-green-400",
+//   },
+//   {
+//     title: "Krok po Kroku",
+//     description: "Motywująca pieśń o determinacji i wytrwałości",
+//     genre: "Pop",
+//     status: "W trakcie",
+//     statusColor: "text-accent",
+//   },
+//   {
+//     title: "Cienie Nocy",
+//     description: "Mroczna kompozycja o ukrytych emocjach",
+//     genre: "Alternative",
+//     status: "Dostępny",
+//     statusColor: "text-green-400",
+//   },
+//   {
+//     title: "Słońce Wschodzi",
+//     description: "Optymistyczna piosenka o nowym początku",
+//     genre: "Pop",
+//     status: "Sprzedany",
+//     statusColor: "text-red-400",
+//   },
+//   {
+//     title: "Pod Gwiazdami",
+//     description: "Romantyczna ballada o miłości i tęsknocie",
+//     genre: "Ballada",
+//     status: "Dostępny",
+//     statusColor: "text-green-400",
+//   },
+//   {
+//     title: "Droga Powrotna",
+//     description: "Refleksyjna opowieść o powrocie do korzeni",
+//     genre: "Folk Rock",
+//     status: "Dostępny",
+//     statusColor: "text-green-400",
+//   },
+//   {
+//     title: "Ostatni Taniec",
+//     description: "Sentymentalna pieśń o pożegnaniu i nadziei",
+//     genre: "Ballada",
+//     status: "W trakcie",
+//     statusColor: "text-accent",
+//   },
+// ];
+
+export default function SongsView({ songs }: Props) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
+
+  const togglePlay = (song: Song) => {
+    if (!audioRef.current) return;
+
+    if (playingId === song._id) {
+      audioRef.current.pause();
+      setPlayingId(null);
+    } else {
+      audioRef.current.src = song.audioUrl;
+      audioRef.current.play();
+      setPlayingId(song._id);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />
@@ -164,14 +186,21 @@ export default function KatalogPiosenekPage() {
                   {/* Audio Player Placeholder */}
                   <div className="mb-6 p-4 bg-black/30 rounded-lg border border-primary/10">
                     <div className="flex items-center gap-3">
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20 hover:bg-accent/30 transition-all group/play">
-                        <Play className="w-5 h-5 text-primary group-hover/play:text-accent transition-colors" />
+                      <button
+                        onClick={() => togglePlay(song)}
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20"
+                      >
+                        {playingId === song._id ? (
+                          <Pause className="w-5 h-5 text-primary" />
+                        ) : (
+                          <Play className="w-5 h-5 text-primary" />
+                        )}
                       </button>
-                      <div className="flex-1 h-1 bg-primary/10 rounded-full overflow-hidden">
-                        <div className="h-full w-1/3 bg-primary/40 rounded-full" />
-                      </div>
+
+                      <audio src={song.audioUrl} />
+
                       <span className="text-xs text-muted-foreground">
-                        3:24
+                        {song.duration}s
                       </span>
                     </div>
                   </div>

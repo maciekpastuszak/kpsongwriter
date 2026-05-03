@@ -9,3 +9,12 @@ export const songsQuery = `
   "audioUrl": file.asset->url
 }
 `;
+
+export const lyricsQuery = `
+*[_type == "songLyrics"] | order(publishedAt desc){
+  _id,
+  title,
+  content,
+  demo
+}
+`;

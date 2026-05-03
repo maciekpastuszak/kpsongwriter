@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Play, Pause, MessageCircle } from "lucide-react";
 import { Song } from "@/types/song";
@@ -11,9 +11,9 @@ type Props = {
 };
 
 const statusStyles = {
-  "Dostępny": "bg-green-500/10 text-green-500 border-green-500/20",
+  Dostępny: "bg-green-500/10 text-green-500 border-green-500/20",
   "W trakcie": "bg-yellow-500/10 text-yellow-500 border-yellow-500/20",
-  "Sprzedany": "bg-red-500/10 text-red-500 border-red-500/20",
+  Sprzedany: "bg-red-500/10 text-red-500 border-red-500/20",
 };
 
 export default function SongsView({ songs }: Props) {
@@ -38,9 +38,46 @@ export default function SongsView({ songs }: Props) {
     }
   };
 
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0a1929]">
-      <audio ref={audioRef} onEnded={() => setPlayingId(null)} />
+      <audio
+        ref={audioRef}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+        onEnded={() => {
+          setPlayingId(null);
+          setCurrentTime(0);
+        }}
+      />
       <Navigation />
 
       {/* Hero */}
@@ -124,9 +161,11 @@ export default function SongsView({ songs }: Props) {
                       </span>
                     </div>
 
-                  <span className={`px-3 py-1 rounded-full text-xs border ${statusStyles[song.status] || "bg-gray-500/10 text-gray-500"}`}>
-                    {song.status}
-                  </span>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs border ${statusStyles[song.status] || "bg-gray-500/10 text-gray-500"}`}
+                    >
+                      {song.status}
+                    </span>
                   </div>
 
                   {/* Description */}
@@ -134,23 +173,80 @@ export default function SongsView({ songs }: Props) {
                     {song.description}
                   </p>
 
-                  {/* Audio Player Placeholder */}
-                  <div className="mb-6 p-4 bg-black/30 rounded-lg border border-primary/10">
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={() => togglePlay(song)}
-                        className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/20"
-                      >
-                        {playingId === song._id ? (
-                          <Pause className="w-5 h-5 text-primary" />
-                        ) : (
-                          <Play className="w-5 h-5 text-primary" />
-                        )}
-                      </button>
+                  {/* Audio Player Container */}
+                  <div className="mb-6 p-4 bg-black/40 rounded-xl border border-primary/10 backdrop-blur-sm">
+                    <div className="flex flex-col gap-3">
+                      {/* Controls & Time */}
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-3">
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => togglePlay(song)}
+                            className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/20 border border-primary/30 text-primary hover:bg-primary/30 transition-colors"
+                          >
+                            {playingId === song._id ? (
+                              <Pause className="w-6 h-6 fill-current" />
+                            ) : (
+                              <Play className="w-6 h-6 fill-current ml-1" />
+                            )}
+                          </motion.button>
 
-                      <span className="text-xs text-muted-foreground">
-                        {song.duration}s
-                      </span>
+                          <div>
+                            <p className="text-[10px] uppercase tracking-widest text-primary/60 font-bold">
+                              Teraz gra:
+                            </p>
+                            <p className="text-sm text-foreground font-medium truncate max-w-30">
+                              {playingId === song._id
+                                ? song.title
+                                : "Odtwarzaj"}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="text-right">
+                          <span className="text-xs font-mono text-primary">
+                            {playingId === song._id
+                              ? formatTime(currentTime)
+                              : "0:00"}
+                          </span>
+                          <span className="text-xs font-mono text-muted-foreground">
+                            {" "}
+                            / {song.duration ? `${song.duration}s` : "--:--"}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar Area */}
+                      <div className="relative h-1.5 w-full bg-white/5 rounded-full overflow-hidden group cursor-pointer">
+                        {/* Dynamic Progress Fill */}
+                        <motion.div
+                          className="absolute top-0 left-0 h-full bg-linear-to-r from-primary to-accent"
+                          initial={{ width: 0 }}
+                          animate={{
+                            width: playingId === song._id ? `${progress}%` : 0,
+                          }}
+                          transition={{
+                            type: "spring",
+                            bounce: 0,
+                            duration: 0.2,
+                          }}
+                        />
+
+                        {/* Decorative Waveform-ish Overlay (Optional) */}
+                        <div className="absolute inset-0 flex items-center justify-around px-1 opacity-20 pointer-events-none">
+                          {isMounted &&
+                            [...Array(20)].map((_, i) => (
+                              <div
+                                key={i}
+                                className="w-0.5 bg-white rounded-full"
+                                style={{
+                                  height: `${Math.random() * 60 + 20}%`,
+                                }}
+                              />
+                            ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 

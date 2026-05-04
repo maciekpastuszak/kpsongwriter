@@ -83,7 +83,7 @@ export default function ListaUtoworowPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+      <section className="relative pt-32 pb-3 bg-linear-to-b from-[#0c1a2b] to-black">
         <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -97,16 +97,25 @@ export default function ListaUtoworowPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-3xl"
+            className="text-xl text-muted-foreground max-w-3xl mb-3"
           >
-            Kompletna baza utworów z informacjami o statusie, gatunku i numerach
-            rejestracyjnych.
+            Kompletna lista utworów KMP z czasem trwania, numerami rejestracji w
+            ZAiKS i kodami ISWC.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-sm text-muted-foreground mb-8 italic"
+          >
+            Kolorem czerwonym oznaczone utwory dedykowane do wykonania przez
+            wokalistki
           </motion.p>
         </div>
       </section>
 
       {/* Works Table */}
-      <section className="py-20 bg-black">
+      <section className="py-10 bg-black">
         <div className="max-w-330 mx-auto px-6">
           {/* Desktop Table */}
           <div className="hidden lg:block overflow-x-auto">

@@ -24,7 +24,7 @@ export default function Demo() {
 
       {/* Hero */}
       <section
-        className="relative pt-32 pb-20 overflow-hidden"
+        className="relative pt-32 pb-3 overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1771911654088-36080143c3bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25jZXJ0JTIwaGFsbCUyMGVtcHR5JTIwZGFya3xlbnwxfHx8fDE3NzIzNzY2MDh8MA&ixlib=rb-4.1.0&q=80&w=1080')`,
           backgroundSize: "cover",
@@ -231,7 +231,7 @@ export default function Demo() {
             className="text-3xl mb-8 text-primary"
             style={{ fontFamily: "var(--font-heading)" }}
           >
-            Lista utworów
+            Lista utworów Demo
           </h2>
 
           <div className="space-y-3">

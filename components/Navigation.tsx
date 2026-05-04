@@ -15,7 +15,6 @@ const navItems = [
   { label: "LICENCJE", path: "/licencje" },
   { label: "DEMO", path: "/demo" },
   { label: "KONTAKT", path: "/kontakt" },
-  { label: "LOGOWANIE", path: "/logowanie" },
 ];
 
 export default function Navigation() {

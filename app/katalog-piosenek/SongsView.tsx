@@ -83,7 +83,7 @@ export default function SongsView({ songs }: Props) {
 
       {/* Hero */}
       <section
-        className="relative pt-32 pb-16 overflow-hidden"
+        className="relative pt-32 pb-3 overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(10,25,41,0.9), rgba(10,25,41,0.95)), url('https://images.unsplash.com/photo-1761005653849-74d20f95ecc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdXNpYyUyMHN0dWRpbyUyMGVxdWlwbWVudCUyMGNpbmVtYXRpYyUyMGRhcmslMjBhdG1vc3BoZXJlfGVufDF8fHx8MTc3MjQ2NjY2OXww&ixlib=rb-4.1.0&q=80&w=1080')`,
           backgroundSize: "cover",

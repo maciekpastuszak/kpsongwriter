@@ -48,7 +48,7 @@ export default function KontaktPage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+      <section className="relative pt-32 pb-3 bg-linear-to-b from-[#0c1a2b] to-black">
         <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -239,7 +239,7 @@ export default function KontaktPage() {
                       href="mailto:kontakt@komupiosenkekomu.pl"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      komupiosenkekomu@gmail.com
+                      kontakt@komu-piosenke.pl
                     </a>
                   </div>
                 </motion.div>

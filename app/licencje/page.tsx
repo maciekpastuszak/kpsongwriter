@@ -82,7 +82,7 @@ export default function LicencjePage() {
 
       {/* Hero */}
       <section
-        className="relative pt-32 pb-20 overflow-hidden"
+        className="relative pt-32 pb-3 overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1764643588195-e18878c0a39c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFnZSUyMGxpZ2h0cyUyMGJlYW1zJTIwZm9nfGVufDF8fHx8MTc3MjM3NjYwOHww&ixlib=rb-4.1.0&q=80&w=1080')`,
           backgroundSize: "cover",

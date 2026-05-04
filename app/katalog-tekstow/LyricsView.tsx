@@ -18,7 +18,7 @@ export default function LyricsView({ lyrics }: Props) {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 bg-linear-to-b from-[#0c1a2b] to-black">
+      <section className="relative pt-32 pb-3 bg-linear-to-b from-[#0c1a2b] to-black">
         <div className="max-w-330 mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -34,8 +34,10 @@ export default function LyricsView({ lyrics }: Props) {
             transition={{ delay: 0.2 }}
             className="text-xl text-muted-foreground max-w-3xl"
           >
-            Pełne teksty piosenek dostępne dla zalogowanych użytkowników.
-            Zaloguj się aby poznać kompletne wersje utworów.
+            Pełne teksty piosenek dostępne po zakupie licencji wyłącznej.
+            <br />
+            Wszystkie utwory objęte są ochroną praw autorskich, zarejestrowane w
+            ZAiKS i posiadające kody ISWC.
           </motion.p>
         </div>
       </section>
@@ -71,22 +73,21 @@ export default function LyricsView({ lyrics }: Props) {
                       >
                         {lyric.content?.slice(0, 120)}...
                       </pre>
-
-                      {/* Locked overlay */}
+                      Locked overlay
                       {locked && (
                         <div className="absolute inset-0 bg-linear-to-b from-transparent via-card/80 to-card flex items-end justify-center pb-8">
                           <div className="text-center">
                             <Lock className="w-12 h-12 text-primary mx-auto mb-3 drop-shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
-                            <p className="text-sm text-muted-foreground">
+                            {/* <p className="text-sm text-muted-foreground">
                               Zaloguj się aby zobaczyć pełny tekst
-                            </p>
+                            </p> */}
                           </div>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  {/* Info */}
+                  {/* Info
                   <div className="flex items-center justify-between mb-6">
                     <span className="text-sm text-muted-foreground">
                       {lyric.content?.split("\n\n").length ?? 0} zwrotki
@@ -97,7 +98,7 @@ export default function LyricsView({ lyrics }: Props) {
                         Wymagane logowanie
                       </span>
                     )}
-                  </div>
+                  </div> */}
 
                   {/* CTA */}
                   <Link
@@ -105,7 +106,7 @@ export default function LyricsView({ lyrics }: Props) {
                     className="w-full px-6 py-3 bg-linear-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Lock className="w-4 h-4" />
-                    Zaloguj się, aby zobaczyć pełny tekst
+                    Kup licencję
                   </Link>
                 </div>
               </motion.div>

@@ -239,31 +239,7 @@ export default function KontaktPage() {
                       href="mailto:kontakt@komupiosenkekomu.pl"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      kontakt@komupiosenkekomu.pl
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Phone */}
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
-                >
-                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3
-                      className="text-lg text-foreground mb-1"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Telefon
-                    </h3>
-                    <a
-                      href="tel:+48123456789"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      +48 123 456 789
+                      komupiosenkekomu@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -283,7 +259,9 @@ export default function KontaktPage() {
                     >
                       Lokalizacja
                     </h3>
-                    <p className="text-muted-foreground">Warszawa, Polska</p>
+                    <p className="text-muted-foreground">
+                      Bielsko-Biała, Polska
+                    </p>
                   </div>
                 </motion.div>
               </div>

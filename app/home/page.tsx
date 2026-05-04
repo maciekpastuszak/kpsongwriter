@@ -135,9 +135,19 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
+            className="text-sm text-muted-foreground italic"
+          >
+            Pełne teksty dostępne po zakupie licencji.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
             className="text-sm text-muted-foreground mb-8 italic"
           >
-            Teksty dostępne wyłącznie po zalogowaniu.
+            Wszystkie utwory objęte są ochroną praw autorskich, <br></br>
+            są zarejestrowane w ZAiKS i posiadają kody ISWC.
           </motion.p>
 
           <motion.div

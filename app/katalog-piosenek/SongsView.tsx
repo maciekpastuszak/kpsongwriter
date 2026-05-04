@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Play, Pause, MessageCircle } from "lucide-react";
 import { Song } from "@/types/song";
+import Link from "next/link";
 
 type Props = {
   songs: Song[];
@@ -122,10 +123,19 @@ export default function SongsView({ songs }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground max-w-3xl"
+            className="text-xl text-muted-foreground max-w-3xl mb-3"
           >
             Przeglądaj bazę oryginalnych utworów z demo muzyki AI. Każda
             piosenka zawiera unikalne teksty i profesjonalne brzmienie.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-sm text-muted-foreground mb-8 italic"
+          >
+            Wszystkie utwory objęte są ochroną praw autorskich, są
+            zarejestrowane w ZAiKS i posiadają kody ISWC.
           </motion.p>
         </div>
       </section>
@@ -156,9 +166,13 @@ export default function SongsView({ songs }: Props) {
                       >
                         {song.title}
                       </h3>
-                      <span className="inline-block px-3 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/20">
-                        {song.genre}
-                      </span>
+                      <a
+                        href={song.audioUrl}
+                        download
+                        className="inline-flex items-center gap-2 px-3 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/20 hover:bg-primary/20 transition-colors"
+                      >
+                        Pobierz MP3
+                      </a>
                     </div>
 
                     <span
@@ -251,7 +265,7 @@ export default function SongsView({ songs }: Props) {
                   </div>
 
                   {/* CTA Button */}
-                  <button
+                  {/* <button
                     className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-accent/10 text-primary border border-primary/30 rounded-lg hover:border-accent hover:shadow-[0_0_20px_rgba(255,140,66,0.3)] transition-all duration-300 flex items-center justify-center gap-2"
                     disabled={song.status === "Sprzedany"}
                   >
@@ -259,7 +273,22 @@ export default function SongsView({ songs }: Props) {
                     {song.status === "Sprzedany"
                       ? "Niedostępny"
                       : "Zapytaj o licencję"}
-                  </button>
+                  </button> */}
+                  {song.status === "Sprzedany" ? (
+                    <button
+                      className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-accent/10 text-yellow-700 border border-primary/30 rounded-lg flex items-center justify-center gap-2"
+                      disabled
+                    >
+                      Niedostępny
+                    </button>
+                  ) : (
+                    <Link
+                      href="/licencje"
+                      className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-accent/10 text-primary border border-primary/30 rounded-lg hover:border-accent hover:shadow-[0_0_20px_rgba(255,140,66,0.3)] transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                      Kup licencję
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             ))}

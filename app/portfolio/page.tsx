@@ -154,11 +154,10 @@ export default function PortfolioPage() {
               licencyjnych.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4 italic">
-              Jestem tekściarzem amatorem – emerytem. Pierwszą piosenkę
-              napisałem w wieku siedemdziesięciu lat. Przez pierwsze sześć
-              miesięcy napisałem ponad sto pięćdziesiąt piosenek. Dlaczeg? … bo
-              nie mam czasu, … bo chciałem coś napisać dla moich dzieci i
-              wnuków, … bo chciałem sprawdzić czy „ … mogło być inaczej".
+              Jestem tekściarzem amatorem. Pierwszą piosenkę napisałem w czerwcu
+              2025 roku. Przez pierwsze siedem miesięcy napisałem ponad sto
+              pięćdziesiąt piosenek. Dlaczego? …, bo nie mam czasu…, bo chciałem
+              sprawdzić czy … mogło być inaczej
             </p>
             <p className="text-foreground/80 leading-relaxed text-right italic">
               dobrej zabawy KMP
@@ -251,9 +250,9 @@ export default function PortfolioPage() {
                     </div>
                   </div>
 
-                  <button className="px-4 py-2 text-sm text-primary border border-primary/30 rounded hover:bg-primary/10 transition-all">
+                  {/* <button className="px-4 py-2 text-sm text-primary border border-primary/30 rounded hover:bg-primary/10 transition-all">
                     Pobierz
-                  </button>
+                  </button> */}
                 </div>
               </motion.div>
             ))}

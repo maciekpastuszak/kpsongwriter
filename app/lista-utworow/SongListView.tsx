@@ -108,10 +108,10 @@ export default function SongListView({ songs }: Props) {
                     <td className="py-4 px-6 text-muted-foreground font-mono text-sm">
                       {song.iswct}
                     </td>
-                    <td className="py-4 px-6 text-center">
-                      {song.zaiks && (
-                        <CheckCircle2 className="w-5 h-5 text-primary mx-auto drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
-                      )}
+                    <td className="py-4 px-6 text-center flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+
+                      {song.zaiks}
                     </td>
                   </motion.tr>
                 ))}

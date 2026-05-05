@@ -24,44 +24,44 @@ const documents = [
     description: "Szczegółowe warunki licencjonowania utworów",
     filename: "Polityka Licencji KMP",
   },
-  {
-    title: "Polityka Prywatności",
-    description: "Ochrona danych osobowych i RODO",
-    filename: "Polityka Prywatności KMP",
-  },
+  // {
+  //   title: "Polityka Prywatności",
+  //   description: "Ochrona danych osobowych i RODO",
+  //   filename: "Polityka Prywatności KMP",
+  // },
   {
     title: "Wzór Umowy Licencyjnej",
     description: "Szablon umowy wyłącznej licencji na tekst piosenki",
     filename: "Wzór Umowy KMP",
   },
   {
-    title: "Certyfikat Licencji (wzór z numeracją)",
-    description: "Przykładowy certyfikat z unikalnym numerem",
-    filename: "Certyfikat Licencji KMP",
+    title: "Warunki publikacji utworu",
+    description: "Warunki publikacji utworu",
+    filename: "Warunki publikacji utworu",
   },
 ];
 
 const howItWorks = [
   {
     number: "1",
-    title: "Wybierasz tekst",
+    title: "Wybierasz utwór",
     description:
       "Przeglądasz katalog i znajdujesz utwór, który Cię zainteresował",
   },
   {
     number: "2",
-    title: "Kontakt",
-    description: "Kontaktujesz się ze mną w sprawie zakupu licencji",
+    title: "Decyzja o zakupie",
+    description: "Decydujesz się na zakup licencji wyłącznej",
   },
   {
     number: "3",
-    title: "Otrzymujesz projekt umowy",
+    title: "Pobierasz dokumenty",
     description:
-      "Wysyłam Ci szczegółowy projekt umowy licencyjnej do zapoznania",
+      "Zapoznajesz się z Wzorem umowy licencyjnej, Regulaminem i Polityką Licencji",
   },
   {
     number: "4",
-    title: "Podpis + przelew",
+    title: "Akceptacja + przelew",
     description:
       "Po akceptacji warunków podpisujesz umowę i dokonujesz płatności",
   },
@@ -69,7 +69,7 @@ const howItWorks = [
     number: "5",
     title: "Otrzymujesz Certyfikat Licencji",
     description:
-      "Dostajesz oficjalny certyfikat z unikalnym numerem rejestracyjnym",
+      "oficjalny certyfikat z numerem rejestracyjnym oraz pełny tekst utworu otrzymujesz na podany email w PDF",
   },
 ];
 
@@ -114,8 +114,8 @@ export default function LicencjePage() {
       </section>
 
       {/* Model Licencjonowania */}
-      <section className="py-20 bg-linear-to-b from-black to-[#0c1a2b]">
-        <div className="max-w-225 mx-auto px-6">
+      <section className="py-10 bg-linear-to-b from-black to-[#0c1a2b]">
+        <div className="max-w-225 mx-auto px-6 mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,17 +144,29 @@ export default function LicencjePage() {
             <p className="text-foreground/80 leading-relaxed">
               Po zakupie licencji nabywca tworzy{" "}
               <span className="text-primary">
-                własną, nową kompozycję muzyczną
+                własną aranżację jako nową kompozycję muzyczną
               </span>
-              , wykorzystując zakupiony tekst. Demo AI nie jest częścią licencji
-              i nie może być wykorzystywane komercyjnie.
+              , wykorzystując zakupiony tekst. Demo AI nie może być
+              wykorzystywane komercyjnie.
             </p>
           </motion.div>
+        </div>
+
+        <div className="max-w-225 mx-auto px-6">
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl mb-8 text-primary text-center"
+            style={{ fontFamily: "var(--font-heading)" }}
+          >
+            Cena licencji wyłącznej: 2.500 PLN
+          </motion.h3>
         </div>
       </section>
 
       {/* Co Otrzymujesz */}
-      <section className="py-20 bg-[#0c1a2b]">
+      <section className="pb-10 bg-[#0c1a2b]">
         <div className="max-w-330 mx-auto px-6">
           <h2
             className="text-4xl mb-12 text-primary text-center"
@@ -311,6 +323,38 @@ export default function LicencjePage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-10 bg-[#0c1a2b]">
+        <div className="max-w-330 mx-auto py-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="p-8 bg-card/50 rounded-lg border border-primary/20"
+          >
+            <p className="text-foreground/80 leading-relaxed mb-4">
+              Akceptując{" "}
+              <span className="text-primary">
+                Wzór umowy, Regulamin i Politykę licencji oraz wpłacając cenę
+                licencji przelewem
+              </span>
+              zawierasz z autorem umowę licencji wyłącznej.{" "}
+              <span className="text-accent">poglądowy</span> i służy prezentacji
+              potencjału tekstu.
+            </p>
+            <p className="text-foreground/80 leading-relaxed">
+              Po zakupie licencji nabywca tworzy{" "}
+              <span className="text-primary">
+                własną aranżację jako nową kompozycję muzyczną
+              </span>
+              , wykorzystując zakupiony tekst. Demo AI nie może być
+              wykorzystywane komercyjnie. Po wpłacie wyślij Email z
+              potwierdzeniem wpłaty na adres: kontakt@komu-piosenke.pl Umowa
+              będzie automatycznie zawarta z wpłacającym cenę licencji
+            </p>
+          </motion.div>
         </div>
       </section>
 

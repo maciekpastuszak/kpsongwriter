@@ -3,6 +3,8 @@ import { lyricsQuery } from "@/sanity/queries";
 import LyricsView from "./LyricsView";
 import { Lyrics } from "@/types/lyrics";
 
+export const revalidate = 0;
+
 export default async function Page() {
   const lyrics: Lyrics[] = await client.fetch(lyricsQuery);
 

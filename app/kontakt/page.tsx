@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function KontaktPage() {
   const [formData, setFormData] = useState({
@@ -212,75 +213,13 @@ export default function KontaktPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h2
-                className="text-3xl mb-8 text-primary"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Informacje kontaktowe
-              </h2>
-
-              <div className="space-y-6">
-                {/* Email */}
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
-                >
-                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3
-                      className="text-lg text-foreground mb-1"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Email
-                    </h3>
-                    <a
-                      href="mailto:kontakt@komupiosenkekomu.pl"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      kontakt@komu-piosenke.pl
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Location */}
-                <motion.div
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all duration-300"
-                >
-                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3
-                      className="text-lg text-foreground mb-1"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Lokalizacja
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Bielsko-Biała, Polska
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Additional Info */}
-              <div className="mt-8 p-6 bg-card/30 rounded-lg border border-primary/10">
-                <h3
-                  className="text-xl text-primary mb-4"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
-                  Czas odpowiedzi
-                </h3>
-                <p className="text-foreground/80 leading-relaxed mb-3">
-                  Odpowiadam na wszystkie zapytania w ciągu 24-48 godzin.
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  W przypadku pilnych spraw proszę o kontakt telefoniczny.
-                </p>
-              </div>
+              <Image
+                src="/images/caught-in-joy-KhBjIa04XuA-unsplash.jpg"
+                alt="Contact"
+                className="rounded-l-3xl shadow-lg"
+                width={600}
+                height={400}
+              />
             </motion.div>
           </div>
         </div>

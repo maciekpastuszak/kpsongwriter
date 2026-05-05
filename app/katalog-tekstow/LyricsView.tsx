@@ -116,7 +116,7 @@ export default function LyricsView({ lyrics }: Props) {
       </section>
 
       {/* Info Banner */}
-      <section className="py-16 bg-linear-to-t from-[#0c1a2b] to-black">
+      {/* <section className="py-16 bg-linear-to-t from-[#0c1a2b] to-black">
         <div className="max-w-225 mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export default function LyricsView({ lyrics }: Props) {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

@@ -15,7 +15,8 @@ export const songLyricsType = defineType({
     defineField({
       name: "content",
       title: "Treść",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
     }),
 
     defineField({

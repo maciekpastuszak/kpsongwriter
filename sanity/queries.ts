@@ -18,3 +18,14 @@ export const lyricsQuery = `
   demo
 }
 `;
+
+export const songListQuery = `
+  *[_type == "songList"] | order(publishedAt desc) {
+    _id,
+    title,
+    duration,
+    zaiks,
+    iswct,
+    publishedAt
+  }
+`;

@@ -1,0 +1,283 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tytuł"
+      },
+      {
+        "options": {
+          "accept": "audio/mpeg"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "file",
+        "type": "file",
+        "title": "Plik MP3"
+      },
+      {
+        "name": "duration",
+        "type": "string",
+        "title": "Czas (sekundy)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Dostępny",
+              "value": "Dostępny"
+            },
+            {
+              "title": "W trakcie",
+              "value": "W trakcie"
+            },
+            {
+              "title": "Sprzedany",
+              "value": "Sprzedany"
+            }
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "Dostępny",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "genre",
+        "type": "string",
+        "title": "Gatunek"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Opis"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Opublikowano"
+      }
+    ],
+    "name": "songAudio",
+    "type": "document",
+    "title": "Piosenki (Audio)"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tytuł"
+      },
+      {
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "content",
+        "type": "array",
+        "title": "Treść"
+      },
+      {
+        "name": "demo",
+        "type": "text"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Opublikowano"
+      }
+    ],
+    "name": "songLyrics",
+    "type": "document",
+    "title": "Piosenki (Teksty)"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tytuł"
+      },
+      {
+        "name": "duration",
+        "type": "string",
+        "title": "Czas trwania"
+      },
+      {
+        "name": "zaiks",
+        "type": "string",
+        "title": "Numer Zaiks"
+      },
+      {
+        "name": "iswct",
+        "type": "string",
+        "title": "Numer ISWCT"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Opublikowano"
+      }
+    ],
+    "name": "songList",
+    "type": "document",
+    "title": "Lista Piosenek"
+  }
+]

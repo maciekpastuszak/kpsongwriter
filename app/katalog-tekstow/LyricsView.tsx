@@ -86,7 +86,13 @@ export default function LyricsView({ lyrics }: Props) {
                       {isOpen ? (
                         <PortableText value={lyric.content} />
                       ) : (
-                        <PortableText value={lyric.content?.slice(0, 1)} />
+                        <p>
+                          {lyric.content?.[0]?.children?.[0]?.text.slice(
+                            0,
+                            120,
+                          )}
+                          ...
+                        </p>
                       )}
                     </div>
 

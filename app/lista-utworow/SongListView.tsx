@@ -94,20 +94,13 @@ export default function SongListView({ songs }: Props) {
                     transition={{ delay: index * 0.05 }}
                     className="border-b border-primary/10 hover:bg-card/30 transition-colors"
                   >
-                    <td
-                      className="py-4 px-6 text-foreground"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {song.title}
-                    </td>
+                    <td className="py-4 px-6 text-foreground">{song.title}</td>
                     <td className="py-4 px-6">
-                      <span className="inline-block px-3 py-1 text-xs rounded-full">
+                      <span className="inline-block px-3 py-1 rounded-full">
                         {song.duration || "N/A"}
                       </span>
                     </td>
-                    <td className="py-4 px-6 text-muted-foreground font-mono text-sm">
-                      {song.iswct}
-                    </td>
+                    <td className="py-4 px-6">{song.iswct}</td>
                     <td className="py-4 px-6 text-center flex items-center justify-center gap-2">
                       <CheckCircle2 className="w-5 h-5 text-primary drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
 

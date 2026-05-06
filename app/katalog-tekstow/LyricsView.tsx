@@ -35,11 +35,28 @@ export default function LyricsView({ lyrics }: Props) {
           >
             Katalog Tekstów
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-muted-foreground max-w-3xl mb-3"
+          >
+            Pełne teksty piosenek dostępne po zakupie licencji wyłącznej.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="text-sm text-muted-foreground italic"
+          >
+            Wszystkie utwory objęte są ochroną praw autorskich, zarejestrowane w
+            ZAiKS i posiadające kody ISWC.
+          </motion.p>
         </div>
       </section>
 
       {/* Lyrics Grid */}
-      <section className="py-20 bg-black">
+      <section className="py-10 bg-black">
         <div className="max-w-330 mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {lyrics.map((lyric, index) => {

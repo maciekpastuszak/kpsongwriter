@@ -17,27 +17,27 @@ const documents = [
   {
     title: "Regulamin",
     description: "Zasady korzystania z serwisu i katalog piosenek",
-    filename: "Regulamin KMP",
+    filename: "KMP_Regulamin_Serwisu.docx",
   },
   {
     title: "Polityka Licencji",
     description: "Szczegółowe warunki licencjonowania utworów",
-    filename: "Polityka Licencji KMP",
+    filename: "KMP_Polityka_Licencji.docx",
   },
   // {
   //   title: "Polityka Prywatności",
   //   description: "Ochrona danych osobowych i RODO",
-  //   filename: "Polityka Prywatności KMP",
+  //   filename: "KMP_Polityka_Prywatności.docx",
   // },
   {
     title: "Wzór umowy licencji",
     description: "Szablon umowy wyłącznej licencji na tekst piosenki",
-    filename: "Wzór Umowy KMP",
+    filename: "KMP_Umowa_Licencyjna_Wylaczna.docx",
   },
   {
     title: "Warunki publikacji utworu",
     description: "Warunki publikacji utworu",
-    filename: "Warunki publikacji utworu",
+    filename: "KMP_Warunki_Publikacji_Utworu.docx",
   },
 ];
 
@@ -396,13 +396,17 @@ export default function LicencjePage() {
                   </p>
                 </div>
 
-                <button className="flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
+                <a
+                  href={`/docs/${doc.filename}`}
+                  download
+                  className="flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300"
+                >
                   <Download className="w-4 h-4" />
                   <span className="hidden sm:inline">
                     Pobierz {doc.filename}
                   </span>
                   <span className="sm:hidden">Download</span>
-                </button>
+                </a>
               </motion.div>
             ))}
           </div>

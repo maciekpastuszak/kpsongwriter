@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { Lock } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import { PortableText } from "@portabletext/react";
 
 import { Lyrics } from "@/types/lyrics";
 
@@ -81,14 +82,13 @@ export default function LyricsView({ lyrics }: Props) {
                     </h3>
 
                     {/* Text */}
-                    <pre
-                      className="text-foreground/70 whitespace-pre-wrap leading-relaxed mb-6"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      {isOpen
-                        ? lyric.content
-                        : lyric.content?.slice(0, 120) + "..."}
-                    </pre>
+                    <div className="text-foreground/70 whitespace-pre-wrap leading-relaxed mb-6">
+                      {isOpen ? (
+                        <PortableText value={lyric.content} />
+                      ) : (
+                        <PortableText value={lyric.content?.slice(0, 1)} />
+                      )}
+                    </div>
 
                     {/* Button */}
                     <button

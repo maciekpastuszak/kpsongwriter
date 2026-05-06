@@ -190,7 +190,7 @@ export default function KontaktPage() {
                         ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
                         : "border-primary/20 focus:border-primary focus:outline-none"
                     }`}
-                    placeholder="Opisz swoją sprawę..."
+                    placeholder="Wiadomość..."
                     required
                   />
                 </div>

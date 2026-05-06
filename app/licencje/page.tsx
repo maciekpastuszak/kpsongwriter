@@ -30,7 +30,7 @@ const documents = [
   //   filename: "Polityka Prywatności KMP",
   // },
   {
-    title: "Wzór Umowy Licencyjnej",
+    title: "Wzór umowy licencji",
     description: "Szablon umowy wyłącznej licencji na tekst piosenki",
     filename: "Wzór Umowy KMP",
   },
@@ -399,7 +399,7 @@ export default function LicencjePage() {
                 <button className="flex items-center gap-2 px-6 py-3 bg-primary/10 text-primary border border-primary/30 rounded-lg hover:bg-primary hover:text-black hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all duration-300">
                   <Download className="w-4 h-4" />
                   <span className="hidden sm:inline">
-                    Download {doc.filename}
+                    Pobierz {doc.filename}
                   </span>
                   <span className="sm:hidden">Download</span>
                 </button>

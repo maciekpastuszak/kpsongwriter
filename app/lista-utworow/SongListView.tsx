@@ -40,8 +40,7 @@ export default function SongListView({ songs }: Props) {
             transition={{ duration: 1, delay: 0.4 }}
             className="text-sm text-muted-foreground mb-8 italic"
           >
-            Kolorem czerwonym oznaczone utwory dedykowane do wykonania przez
-            wokalistki
+            Emotikon oznacza utwory dedykowane do wykonania przez wokalistki”
           </motion.p>
         </div>
       </section>

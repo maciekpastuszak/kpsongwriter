@@ -279,5 +279,67 @@
     "name": "songList",
     "type": "document",
     "title": "Lista Piosenek"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Tytuł"
+      },
+      {
+        "options": {
+          "accept": "audio/mpeg"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "file",
+        "type": "file",
+        "title": "Plik MP3"
+      },
+      {
+        "name": "duration",
+        "type": "string",
+        "title": "Czas (sekundy)"
+      },
+      {
+        "name": "genre",
+        "type": "string",
+        "title": "Gatunek"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "title": "Opis"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Opublikowano"
+      }
+    ],
+    "name": "demoAudio",
+    "type": "document",
+    "title": "Piosenki (`DEMO`)"
   }
 ]

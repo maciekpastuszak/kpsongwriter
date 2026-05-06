@@ -29,3 +29,14 @@ export const songListQuery = `
     publishedAt
   }
 `;
+
+export const demosQuery = `
+*[_type == "demoAudio"] | order(publishedAt desc) {
+  _id,
+  title,
+  genre,
+  duration,
+  description,
+  "audioUrl": file.asset->url
+}
+`;

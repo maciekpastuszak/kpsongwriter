@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import { Music, FileText, Shield, Heart } from "lucide-react";
 import { motion } from "motion/react";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 const offerings = [
   {
@@ -216,6 +217,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <CookieBanner />
       <Footer />
     </div>
   );

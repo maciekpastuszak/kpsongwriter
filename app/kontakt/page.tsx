@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { Footer } from "react-day-picker";
 
 export default function KontaktPage() {
   const searchParams = useSearchParams();
@@ -229,6 +230,7 @@ export default function KontaktPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

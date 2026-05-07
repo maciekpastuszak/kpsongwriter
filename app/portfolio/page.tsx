@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { Play, FileText } from "lucide-react";
 import { motion } from "motion/react";
 import studioImage from "figma:asset/989346e6c74e009d58cf75b7e41f5098314e259c.png";
+import Footer from "@/components/Footer";
 
 const audioSamples = [
   { title: "Nocna Symfonia", duration: "3:24", genre: "Ballada" },
@@ -259,6 +260,7 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
+import Footer from "@/components/Footer";
 
 const documents = [
   {
@@ -465,6 +466,7 @@ export default function LicencjePage() {
           </motion.div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

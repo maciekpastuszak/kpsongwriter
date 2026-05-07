@@ -1,6 +1,7 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
+import { useRouter } from "next/navigation";
 import {
   Shield,
   FileText,
@@ -63,7 +64,7 @@ const howItWorks = [
     number: "4",
     title: "Akceptacja + przelew",
     description:
-      "Po akceptacji warunków podpisujesz umowę i dokonujesz płatności",
+      "Po akceptacji warunków, zawierasz umowę dokonując przelewu ceny licencji",
   },
   {
     number: "5",
@@ -75,7 +76,7 @@ const howItWorks = [
 
 export default function LicencjePage() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />
@@ -338,11 +339,10 @@ export default function LicencjePage() {
               Akceptując{" "}
               <span className="text-primary">
                 Wzór umowy, Regulamin i Politykę licencji oraz wpłacając cenę
-                licencji przelewem
+                licencji przelewem{" "}
               </span>
-              zawierasz z autorem umowę licencji wyłącznej.{" "}
-              <span className="text-accent">poglądowy</span> i służy prezentacji
-              potencjału tekstu.
+              zawierasz z autorem umowę licencji wyłącznej. Dane do przelewu
+              otrzymasz w odpowiedzi na formularz kontaktowy
             </p>
             <p className="text-foreground/80 leading-relaxed">
               Po zakupie licencji nabywca tworzy{" "}
@@ -441,6 +441,11 @@ export default function LicencjePage() {
             </div>
 
             <button
+              onClick={() =>
+                router.push(
+                  `/kontakt?subject=Zakup licencji&message=Dzień dobry, interesuje mnie zakup licencji na piosenkę o tytule:`,
+                )
+              }
               disabled={!acceptedTerms}
               className={`w-full py-4 rounded-lg transition-all duration-300 ${
                 acceptedTerms
@@ -449,7 +454,7 @@ export default function LicencjePage() {
               }`}
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              <span className="text-xl">Kup licencję</span>
+              <span className="text-xl">Kupuję licencję</span>
             </button>
 
             {!acceptedTerms && (

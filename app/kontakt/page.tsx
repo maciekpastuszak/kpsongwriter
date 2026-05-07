@@ -5,13 +5,18 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 export default function KontaktPage() {
+  const searchParams = useSearchParams();
+
+  const defaultSubject = searchParams.get("subject") || "";
+  const defaultMessage = searchParams.get("message") || "";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
-    message: "",
+    subject: defaultSubject,
+    message: defaultMessage,
   });
 
   const [focusedField, setFocusedField] = useState<string | null>(null);

@@ -1,20 +1,18 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { motion } from "motion/react";
+import { useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { Footer } from "react-day-picker";
 
-// 1. Komponent wewnętrzny obsługujący logikę searchParams i formularza
-function KontaktContent() {
+export default function KontaktPage() {
   const searchParams = useSearchParams();
 
   const defaultSubject = searchParams.get("subject") || "";
   const defaultMessage = searchParams.get("message") || "";
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,16 +24,24 @@ function KontaktContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
       if (res.ok) {
         alert("Wiadomość została wysłana!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
       } else {
         alert("Błąd wysyłania wiadomości");
       }
@@ -74,7 +80,7 @@ function KontaktContent() {
       <section className="py-20 bg-black">
         <div className="max-w-300 mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Formularz */}
+            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -87,11 +93,16 @@ function KontaktContent() {
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Field */}
                 <div>
-                  <label className="block text-sm text-foreground/80 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
                     Imię i nazwisko
                   </label>
                   <input
+                    id="name"
                     type="text"
                     value={formData.name}
                     onChange={(e) =>
@@ -102,18 +113,23 @@ function KontaktContent() {
                     className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
                       focusedField === "name"
                         ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
-                        : "border-primary/20"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
                     }`}
                     placeholder="Jan Kowalski"
                     required
                   />
                 </div>
 
+                {/* Email Field */}
                 <div>
-                  <label className="block text-sm text-foreground/80 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) =>
@@ -124,18 +140,23 @@ function KontaktContent() {
                     className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
                       focusedField === "email"
                         ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
-                        : "border-primary/20"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
                     }`}
                     placeholder="jan@example.com"
                     required
                   />
                 </div>
 
+                {/* Subject Field */}
                 <div>
-                  <label className="block text-sm text-foreground/80 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
                     Temat
                   </label>
                   <input
+                    id="subject"
                     type="text"
                     value={formData.subject}
                     onChange={(e) =>
@@ -146,18 +167,23 @@ function KontaktContent() {
                     className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 ${
                       focusedField === "subject"
                         ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
-                        : "border-primary/20"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
                     }`}
                     placeholder="Zapytanie o licencję"
                     required
                   />
                 </div>
 
+                {/* Message Field */}
                 <div>
-                  <label className="block text-sm text-foreground/80 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm text-foreground/80 mb-2"
+                  >
                     Wiadomość
                   </label>
                   <textarea
+                    id="message"
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
@@ -168,24 +194,26 @@ function KontaktContent() {
                     className={`w-full px-4 py-3 bg-card/50 border rounded-lg transition-all duration-300 resize-none ${
                       focusedField === "message"
                         ? "border-primary shadow-[0_0_20px_rgba(212,175,55,0.2)] outline-none"
-                        : "border-primary/20"
+                        : "border-primary/20 focus:border-primary focus:outline-none"
                     }`}
                     placeholder="Wiadomość..."
                     required
                   />
                 </div>
 
+                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-primary text-black rounded-lg hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 font-bold"
+                  className="w-full py-4 bg-linear-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
+                  style={{ fontFamily: "var(--font-heading)" }}
                 >
                   <Send className="w-5 h-5" />
-                  <span>Wyślij wiadomość</span>
+                  <span className="text-lg">Wyślij wiadomość</span>
                 </button>
               </form>
             </motion.div>
 
-            {/* Zdjęcie */}
+            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -194,9 +222,9 @@ function KontaktContent() {
               <Image
                 src="/images/caught-in-joy-KhBjIa04XuA-unsplash.jpg"
                 alt="Contact"
-                className="rounded-3xl shadow-lg"
+                className="rounded-l-3xl shadow-lg"
                 width={600}
-                height={600}
+                height={400}
               />
             </motion.div>
           </div>
@@ -204,20 +232,5 @@ function KontaktContent() {
       </section>
       <Footer />
     </div>
-  );
-}
-
-// 2. Główny eksport strony z Suspense
-export default function KontaktPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-[#0a1929] flex items-center justify-center text-white text-2xl">
-          Ładowanie...
-        </div>
-      }
-    >
-      <KontaktContent />
-    </Suspense>
   );
 }

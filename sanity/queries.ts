@@ -40,3 +40,19 @@ export const demosQuery = `
   "audioUrl": file.asset->url
 }
 `;
+
+export const portfolioAudioQuery = `
+*[_type == "demoAudio" && showInPortfolio == true] | order(publishedAt desc) {
+  title,
+  duration,
+  genre,
+  "audioUrl": file.asset->url
+}
+`;
+
+export const portfolioLyricsQuery = `
+*[_type == "songLyrics" && showInPortfolio == true] | order(publishedAt desc) {
+  title,
+  content
+}
+`;

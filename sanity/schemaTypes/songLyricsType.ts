@@ -30,5 +30,12 @@ export const songLyricsType = defineType({
       title: "Opublikowano",
       type: "datetime",
     }),
+
+    defineField({
+      name: "showInPortfolio",
+      title: "Pokaż w Portfolio",
+      type: "boolean",
+      initialValue: false,
+    }),
   ],
 });

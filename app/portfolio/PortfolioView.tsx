@@ -1,10 +1,13 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
-import { Play, FileText } from "lucide-react";
+import { Play, Pause, Volume2, Info } from "lucide-react";
 import { motion } from "motion/react";
 import studioImage from "figma:asset/989346e6c74e009d58cf75b7e41f5098314e259c.png";
 import Footer from "@/components/Footer";
+import { useState, useRef, useEffect } from "react";
+import { PortableText } from "@portabletext/react";
+import { Lock } from "lucide-react";
 
 type Props = {
   audio: any[];
@@ -12,6 +15,55 @@ type Props = {
 };
 
 export default function PortfolioView({ audio, lyrics }: Props) {
+  const [currentTrack, setCurrentTrack] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isPlaying, currentTrack]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateProgress = () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      setProgress(percent || 0);
+    };
+
+    audio.addEventListener("timeupdate", updateProgress);
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateProgress);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    audioRef.current.currentTime = 0;
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentTrack]);
+
+  const [openLyrics, setOpenLyrics] = useState<number[]>([]);
+
+  const toggleLyrics = (index: number) => {
+    setOpenLyrics((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#0a1929]">
       <Navigation />
@@ -169,35 +221,74 @@ export default function PortfolioView({ audio, lyrics }: Props) {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {audio.map((sample, index) => (
-              <motion.div
+            {audio.map((track, index) => (
+              <motion.button
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-6 bg-linear-to-r from-card to-muted rounded-lg border border-primary/20 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,140,66,0.2)]"
+                transition={{ delay: index * 0.05 }}
+                onClick={() => {
+                  setCurrentTrack(index);
+                  setIsPlaying(true);
+                }}
+                className={`w-full p-4 rounded-lg border transition-all duration-300 text-left ${
+                  currentTrack === index
+                    ? "bg-linear-to-r from-primary/20 to-accent/20 border-primary shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                    : "bg-card/30 border-primary/10 hover:border-primary/30 hover:bg-card/50"
+                }`}
               >
                 <div className="flex items-center gap-4">
-                  <button className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/20 group-hover:bg-accent/30 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(255,140,66,0.4)]">
-                    <Play className="w-6 h-6 text-primary group-hover:text-accent transition-colors" />
-                  </button>
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center rounded-full ${
+                      currentTrack === index && isPlaying
+                        ? "bg-linear-to-br from-primary to-accent"
+                        : "bg-primary/10"
+                    }`}
+                  >
+                    {currentTrack === index && isPlaying ? (
+                      <Pause className="w-5 h-5 text-black" />
+                    ) : (
+                      <Play className="w-5 h-5 text-primary" />
+                    )}
+                  </div>
 
                   <div className="flex-1">
                     <h3
-                      className="text-lg text-foreground mb-1"
+                      className={`text-lg mb-1 ${
+                        currentTrack === index
+                          ? "text-primary"
+                          : "text-foreground"
+                      }`}
                       style={{ fontFamily: "var(--font-heading)" }}
                     >
-                      {sample.title}
+                      {track.title}
                     </h3>
-                    <div className="flex gap-4 text-sm text-muted-foreground">
-                      <span>{sample.genre}</span>
-                      <span>•</span>
-                      <span>{sample.duration}</span>
+                    <div className="text-sm text-muted-foreground">
+                      {track.genre} • {track.duration}
                     </div>
                   </div>
+
+                  {currentTrack === index && isPlaying && (
+                    <div className="flex gap-1">
+                      {[...Array(4)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="w-1 bg-primary rounded-full"
+                          animate={{
+                            height: ["8px", "20px", "8px"],
+                          }}
+                          transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            delay: i * 0.1,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -214,40 +305,53 @@ export default function PortfolioView({ audio, lyrics }: Props) {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {lyrics.map((excerpt, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-6 bg-linear-to-r from-muted to-card rounded-lg border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-all">
-                    <FileText className="w-6 h-6 text-primary" />
-                  </div>
-
-                  <div className="flex-1">
+            {lyrics.map((lyric, index) => {
+              const isOpen = openLyrics.includes(index);
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="group relative overflow-hidden rounded-lg bg-linear-to-br from-card to-muted border border-primary/20 hover:border-primary/40 transition-all duration-300"
+                >
+                  <div className="p-8">
+                    {/* Title */}
                     <h3
-                      className="text-lg text-foreground mb-1"
+                      className="text-3xl text-primary mb-6"
                       style={{ fontFamily: "var(--font-heading)" }}
                     >
-                      {excerpt.title}
+                      {lyric.title}
                     </h3>
-                    <div className="flex gap-4 text-sm text-muted-foreground">
-                      <span>{excerpt.type}</span>
-                      <span>•</span>
-                      <span>{excerpt.pages}</span>
-                    </div>
-                  </div>
 
-                  {/* <button className="px-4 py-2 text-sm text-primary border border-primary/30 rounded hover:bg-primary/10 transition-all">
-                    Pobierz
-                  </button> */}
-                </div>
-              </motion.div>
-            ))}
+                    {/* Text */}
+                    <div className="text-foreground/70 whitespace-pre-wrap leading-relaxed mb-6">
+                      {isOpen ? (
+                        <PortableText value={lyric.content} />
+                      ) : (
+                        <p>
+                          {lyric.content?.[0]?.children?.[0]?.text.slice(
+                            0,
+                            120,
+                          )}
+                          ...
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Button */}
+                    <button
+                      onClick={() => toggleLyrics(index)}
+                      className="w-full px-6 py-3 bg-linear-to-r from-primary to-accent text-black rounded-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                      <Lock className="w-4 h-4" />
+                      {isOpen ? "Hide text" : "Pokaż tekst"}
+                    </button>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

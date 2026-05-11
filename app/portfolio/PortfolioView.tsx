@@ -229,8 +229,12 @@ export default function PortfolioView({ audio, lyrics }: Props) {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
                 onClick={() => {
-                  setCurrentTrack(index);
-                  setIsPlaying(true);
+                  if (currentTrack === index) {
+                    setIsPlaying(!isPlaying);
+                  } else {
+                    setCurrentTrack(index);
+                    setIsPlaying(true);
+                  }
                 }}
                 className={`w-full p-4 rounded-lg border transition-all duration-300 text-left ${
                   currentTrack === index
@@ -238,6 +242,12 @@ export default function PortfolioView({ audio, lyrics }: Props) {
                     : "bg-card/30 border-primary/10 hover:border-primary/30 hover:bg-card/50"
                 }`}
               >
+                {" "}
+                <audio
+                  ref={audioRef}
+                  src={audio[currentTrack]?.audioUrl}
+                  preload="metadata"
+                />
                 <div className="flex items-center gap-4">
                   <div
                     className={`w-10 h-10 flex items-center justify-center rounded-full ${

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
     const data = await resend.emails.send({
       from: "Formularz <kontakt@komu-piosenke.pl>",
-      to: ["55pastuszak@gmail.com"],
+      to: ["komupiosenkekomu@gmail.com"],
       subject: subject,
       replyTo: email,
       text: `

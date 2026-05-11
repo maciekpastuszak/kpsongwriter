@@ -352,7 +352,7 @@ export default function LicencjePage() {
               </span>
               , wykorzystując zakupiony tekst. Demo AI nie może być
               wykorzystywane komercyjnie. Po wpłacie wyślij Email z
-              potwierdzeniem wpłaty na adres: kontakt@komu-piosenke.pl Umowa
+              potwierdzeniem wpłaty na adres: komupiosenkekomu@gmail.com. Umowa
               będzie automatycznie zawarta z wpłacającym cenę licencji
             </p>
           </motion.div>

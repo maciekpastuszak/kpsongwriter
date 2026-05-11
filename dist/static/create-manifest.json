@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "createdAt": "2026-05-06T08:59:21.663Z",
+  "createdAt": "2026-05-11T06:21:32.210Z",
   "workspaces": [
     {
       "name": "default",
@@ -12,7 +12,7 @@
       "mediaLibrary": {
         "enabled": false
       },
-      "schema": "79e71301.create-schema.json",
+      "schema": "50bb0bcf.create-schema.json",
       "tools": "0144c35e.create-tools.json"
     }
   ]

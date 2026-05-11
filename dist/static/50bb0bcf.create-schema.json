@@ -193,6 +193,12 @@
         "name": "publishedAt",
         "type": "datetime",
         "title": "Opublikowano"
+      },
+      {
+        "initialValue": false,
+        "name": "showInPortfolio",
+        "type": "boolean",
+        "title": "Pokaż w Portfolio"
       }
     ],
     "name": "songLyrics",
@@ -298,6 +304,12 @@
         "name": "publishedAt",
         "type": "datetime",
         "title": "Opublikowano"
+      },
+      {
+        "initialValue": false,
+        "name": "showInPortfolio",
+        "type": "boolean",
+        "title": "Pokaż w Portfolio"
       }
     ],
     "name": "demoAudio",

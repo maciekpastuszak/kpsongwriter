@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Komu piosenkę komu?",
   description: "Strona z dobrymi piosenkami dla każdego",
   verification: {
-    google: "BnFJClrrrebNKq97n38AEwpon_TgPmwvxuwIs77-1P4",
+    google: "utm2ojb8-GM5cE3rl7Ga2ZI_Kiec_vUkgadk0I1Cg_Q",
   },
 };
 
